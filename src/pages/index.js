@@ -1,0 +1,9 @@
+export {default as Login} from './Login';
+export {default as Profile} from './Profile';
+export {default as Register} from './Register';
+export {default as UserSettings} from './UserSettings';
+export {default as MonitoringRequest} from './MonitoringRequest';
+export {default as MonitoringResponse} from './MonitoringResponse';
+export {default as StudentHistory} from './StudentHistory';
+export {default as Subjects} from './Subjects';
+export {default as Schedules} from './Schedules';
