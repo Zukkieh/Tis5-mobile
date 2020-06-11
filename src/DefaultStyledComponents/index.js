@@ -72,3 +72,15 @@ export const DefaultText = styled.Text`
     font-weight: ${props => props.weight || "100"};
     color: #707070;
 `;
+
+export const DefaultListItem = styled.View`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 168px;
+    border-radius: 7px;
+    border-width: 1px;
+    border-color: black;
+`;

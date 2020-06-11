@@ -46,7 +46,7 @@ const UserSettings = ({route, navigation}) => {
                 <DefaultContainer>
                     <DefaultText size='80px' weight='bold'>SGM</DefaultText>
                     <DefaultText size='14px' style={{marginBottom: 80}}>Sistema de Gestão de Monitoria</DefaultText>
-                    <DefaultText size='25px' weight='600' style={{marginBottom: 150}}>Suas monitorias</DefaultText>
+                    <DefaultText size='25px' weight='bold' style={{marginBottom: 150}}>Suas monitorias</DefaultText>
 
                     {
                         subjects.length > 0 && userData ? userData.monitoring.map((m, index) => {

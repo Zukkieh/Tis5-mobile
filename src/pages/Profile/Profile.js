@@ -23,7 +23,7 @@ const Profile = ({ route, navigation }) => {
         <BackgroundContainer>
             <DefaultContainer>
                 <DefaultText size='80px' weight='bold' style={{marginTop: 30}}>SGM</DefaultText>
-                <DefaultText size='25px'>{`Seja bem vindo, ${route.params.user.split(' ')[0]}!`}</DefaultText>
+                <DefaultText size='25px'>{`Seja bem-vindo(a), ${route.params.user.split(' ')[0]}!`}</DefaultText>
                 <SettingsSection>
                     <SettingsButton
                         onPress={() => navigation.navigate('UserSettings', {is_monitor: userData.is_monitor})}

@@ -11,7 +11,9 @@ import {
   Schedules,
   MonitoringRequest,
   MonitoringResponse,
-  StudentHistory
+  StudentHistory,
+  Confirmation,
+  Scheduling,
 } from './src/pages'
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -70,10 +72,10 @@ const MonitorUserMainTabs = (props) => (
           ? 'ios-calendar'
           : 'ios-calendar';
       } 
-      if (route.name === 'Solicitações') {
+      if (route.name === 'Agendamentos') {
         iconName = focused
-          ? 'ios-send'
-          : 'ios-send';
+          ? 'ios-list-box'
+          : 'ios-list-box';
       }
       if (route.name === 'Solicitar') {
         iconName = focused
@@ -91,7 +93,7 @@ const MonitorUserMainTabs = (props) => (
   >
     <Tab.Screen name="Perfil" component={Profile}/>
     <Tab.Screen name="Horário" component={Subjects}/>
-    <Tab.Screen name="Solicitações" component={MonitoringResponse}/>
+    <Tab.Screen name="Agendamentos" component={Scheduling}/>
     <Tab.Screen name="Solicitar" component={MonitoringRequest}/>
     <Tab.Screen name="Histórico" component={StudentHistory}/>
   </Tab.Navigator>
@@ -105,6 +107,8 @@ export default function App() {
         <Stack.Screen name="NormalUserMainTabs" component={NormalUserMainTabs} />
         <Stack.Screen name="MonitorUserMainTabs" component={MonitorUserMainTabs} />
         <Stack.Screen name="Register" component={Register} options={{tabBarVisible: false}}/>
+        <Stack.Screen name="Confirmation" component={Confirmation} options={{tabBarVisible: false}}/>
+        <Stack.Screen name="MonitoringResponse" component={MonitoringResponse} options={{tabBarVisible: false}}/>
         <Stack.Screen name="UserSettings" component={UserSettings} options={{tabBarVisible: false}}/>
         <Stack.Screen name="Schedules" component={Schedules} options={{tabBarVisible: false}}/>
       </Stack.Navigator>

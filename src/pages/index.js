@@ -7,3 +7,5 @@ export {default as MonitoringResponse} from './MonitoringResponse';
 export {default as StudentHistory} from './StudentHistory';
 export {default as Subjects} from './Subjects';
 export {default as Schedules} from './Schedules';
+export {default as Scheduling} from './Scheduling';
+export {default as Confirmation} from './Confirmation';

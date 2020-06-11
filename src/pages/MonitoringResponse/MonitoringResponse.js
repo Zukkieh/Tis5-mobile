@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 import Circle from 'react-native-progress/Circle';
 import { connect } from '../../services/socket.js';
 import { Text, TouchableOpacity, KeyboardAvoidingView, Platform, Alert, AsyncStorage, FlatList, View } from 'react-native';
-import api from '../../services/api.js'
+import api from '../../services/api.js';
 import { useFocusEffect } from '@react-navigation/native';
 
 const MonitoringResponse = ({ route, navigation }) => {
@@ -207,7 +207,12 @@ const MonitoringResponse = ({ route, navigation }) => {
                             <DefaultText size='15px' weight='bold' style={{marginTop: 25}}>Sem novas solicitações</DefaultText>
 
                     }
-
+                    <TouchableOpacity
+                        style={{marginTop: 19, marginBottom: 45}}
+                        onPress={() => navigation.goBack()}
+                    >
+                            <Text style={{color: '#707070', fontSize: 16}}>← Agendamentos</Text>
+                    </TouchableOpacity>
                 </DefaultContainer>
             </BackgroundContainer>
         </KeyboardAvoidingView>

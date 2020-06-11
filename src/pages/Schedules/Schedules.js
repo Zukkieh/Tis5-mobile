@@ -5,7 +5,8 @@ import Circle from 'react-native-progress/Circle';
 import {Picker} from '@react-native-community/picker';
 import SCHELULES_INITIAL_VALUES from './initialValues';
 import { Input, BackgroundContainer, DefaultText, DefaultButton, DefaultSubmitButton, DefaultModalView, DefaultContainer } from '../../DefaultStyledComponents';
-import api from '../../services/api.js'
+import api from '../../services/api.js';
+import { Ionicons } from '@expo/vector-icons';
 
 const Schedules = ({route, navigation}) => {
     const [schedules, setSchedules] = useState(SCHELULES_INITIAL_VALUES)
@@ -217,7 +218,7 @@ const Schedules = ({route, navigation}) => {
                                     {cancelable: false},
                                 )}
                             >
-                                <DefaultText size='15px' weight='bold' style={{color: '#FFFFFF'}}>X</DefaultText>
+                                <Ionicons name={'ios-trash'} size={14} color={'white'} />
                             </DefaultButton>
                         }
 
@@ -256,13 +257,13 @@ const Schedules = ({route, navigation}) => {
                 <DefaultContainer>
                     <DefaultText size='80px' weight='bold'>SGM</DefaultText>
                     <DefaultText size='14px' style={{marginBottom: 50}}>Sistema de Gestão de Monitoria</DefaultText>
-                    <DefaultText size='25px' weight='600' style={{marginBottom: 25}}>Seu Horário</DefaultText>
+                    <DefaultText size='25px' weight='bold' style={{marginBottom: 25}}>Seu Horário</DefaultText>
                     {ScheduleModal()}
                     <View style={{display: 'flex', justifyContent: 'center', width: '70%', marginBottom: 100}}>
                         {
                             apiSchedules ? apiSchedules.length !== 0 ?
                                 apiSchedules.map((a, index) => 
-                                    <DefaultText size='15px' style={{textAlign: 'right'}} key={index}>{`${a.day} - de ${a.start} às ${a.end}`}</DefaultText>
+                                    <DefaultText size='15px' style={{textAlign: 'center'}} key={index}>{`${a.day} de ${a.start} às ${a.end}`}</DefaultText>
                                 )
                                 :
                                 <DefaultText size='20px' style={{marginTop: 40, color: 'red'}}>Sem horários cadastrados</DefaultText>

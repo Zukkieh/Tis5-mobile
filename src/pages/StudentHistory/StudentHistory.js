@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { Input, BackgroundContainer, DefaultText, DefaultContainer, DefaultButton, DefaultModalView, DefaultSubmitButton } from '../../DefaultStyledComponents';
+import { Input, BackgroundContainer, DefaultListItem, DefaultText, DefaultContainer, DefaultButton, DefaultModalView, DefaultSubmitButton } from '../../DefaultStyledComponents';
 import Circle from 'react-native-progress/Circle';
 import { Text, TouchableOpacity, KeyboardAvoidingView, Platform, Alert, AsyncStorage, FlatList, View } from 'react-native';
 import api from '../../services/api.js';
-import { ListItem } from './styles.js';
 import {Picker} from '@react-native-community/picker';
 import { useFocusEffect } from '@react-navigation/native';
 import { connect } from '../../services/socket.js';
+import { Ionicons } from '@expo/vector-icons';
 
 const StudentHistory = ({route}) => {
     const [userData, setUserData] = useState();
@@ -143,35 +143,37 @@ const StudentHistory = ({route}) => {
                                 data={data}
                                 renderItem={({ item }) => {
                                     return (
-                                            <ListItem>
-                                                <View style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
-                                                    <DefaultButton
-                                                        sizeX='20px'
-                                                        sizeY='20px'
-                                                        topMargin='0px'
-                                                        style={{backgroundColor: 'red', marginRight: 10}}
-                                                        onPress={() => Alert.alert(
-                                                            'Apagar solicitação',
-                                                            'Deseja mesmo apagar essa solicitação?',
-                                                            [
-                                                                {
-                                                                    text: "Não",
-                                                                    style: "cancel"
-                                                                },
-                                                                {text: 'Sim', onPress: () => deleteRequest(item.id)},
-                                                            ],
-                                                            {cancelable: false},
-                                                        )}
-                                                    >
-                                                        <DefaultText size='15px' weight='bold' style={{color: '#FFFFFF'}}>X</DefaultText>
-                                                    </DefaultButton>
-                                                </View>
+                                            <DefaultListItem>
+                                                { item.status === 'Pendente' && 
+                                                    <View style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
+                                                        <DefaultButton
+                                                            sizeX='20px'
+                                                            sizeY='20px'
+                                                            topMargin='0px'
+                                                            style={{backgroundColor: 'red', marginRight: 10}}
+                                                            onPress={() => Alert.alert(
+                                                                'Apagar solicitação',
+                                                                'Deseja mesmo apagar essa solicitação?',
+                                                                [
+                                                                    {
+                                                                        text: "Não",
+                                                                        style: "cancel"
+                                                                    },
+                                                                    {text: 'Sim', onPress: () => deleteRequest(item.id)},
+                                                                ],
+                                                                {cancelable: false},
+                                                            )}
+                                                        >
+                                                            <Ionicons name={'ios-trash'} size={14} color={'white'} />
+                                                        </DefaultButton>
+                                                    </View>
+                                                }
                                                 <DefaultText style={{ marginBottom: 15 }} size='15px'>{`${item.schedule.day.split('-')[0]} - ${item.schedule.start.split(':')[0]}:${item.schedule.start.split(':')[1]}-${item.schedule.end.split(':')[0]}:${item.schedule.end.split(':')[1]}`}</DefaultText>
                                                 <DefaultText style={{ marginBottom: 5 }} size='15px'>{item.monitor.subject.name}</DefaultText>
                                                 <DefaultText style={{ flexShrink: 1, marginBottom: 5 }} size='10px'>{`Você: ${item.message}`}</DefaultText>
                                                 <DefaultText style={{ flexShrink: 1, marginBottom: 20 }} size='10px'>{`${item.monitor.student.user.name.split(' ')[0]}: ${item.response ? item.response : ''}`}</DefaultText>
                                                 <DefaultText size='15px'>{`${item.status}`}</DefaultText>
-                                            </ListItem>                                       
+                                            </DefaultListItem>                                       
                                         )
                                     }
                                 }
